@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "nombre":"Aprender React", 
+        "completa":false
+    },
+    {
+        "id": 2, 
+        "nombre": "Quedarese en Casa", 
+        "completa":true
+    },
+    {
+        "id": 3, 
+        "nombre": "Ayudare taeras del hogar", 
+        "completa":true
+    },
+    {
+        "id": 4, 
+        "nombre": "Cocinar", 
+        "completa":false
+    },
+    {
+        "id": 5, 
+        "nombre": "Programar", 
+        "completa": true
+    },
+    {
+        "id": 6, 
+        "nombre": "Cuidar la salud", 
+        "completa": true
+    }
+]
