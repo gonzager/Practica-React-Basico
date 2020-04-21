@@ -1,20 +1,19 @@
 import React, { Component } from "react";
+import CheckTarea from './checkTarea'
 
 class CheckTareas extends Component{
 
     render() {
 
-        const {lista} = this.props; 
+        const {lista, handlerCheck} = this.props; 
 
         const checks = lista.map(
-            e => (
-                <div key = {e.id} >
-                    <label  >
-                        <input type="checkbox" defaultChecked={e.completa}  />
-                        {e.nombre}
-                    </label>
+            t => (
+                <div key={t.id}>
+                    <CheckTarea tarea={t} handlerCheck={handlerCheck}/>
                 </div>
-            ));
+            )
+        )
 
         return(
             <div>

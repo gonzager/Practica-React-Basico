@@ -19,7 +19,7 @@ class ComboTareas extends Component {
                 <div>
                     <h3>Cantidad total de tareas {cantidadTareas}</h3>
                 </div>
-                <label for="tareas">Seleccione una tarea:</label>
+                <label htmlFor="tareas">Seleccione una tarea:</label>
                 <select id="tareas">
                     {listaIncompetas}
                 </select>
