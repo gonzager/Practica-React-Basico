@@ -5,12 +5,12 @@ class CheckTareas extends Component{
 
     render() {
 
-        const {lista, handlerCheck} = this.props; 
+        const {lista, handlerCheck, handlerEliminarButton} = this.props; 
 
         const checks = lista.map(
             t => (
                 <div key={t.id}>
-                    <CheckTarea tarea={t} handlerCheck={handlerCheck}/>
+                    <CheckTarea tarea={t} handlerCheck={handlerCheck} handlerEliminarButton={handlerEliminarButton}/>
                 </div>
             )
         )

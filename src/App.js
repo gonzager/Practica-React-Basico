@@ -44,20 +44,30 @@ class App extends Component {
         cantidadTareasCompletas:  newTareas.filter(e=>e.completa).length,
         cantidadTareasIncompletas: newTareas.filter(e=>!e.completa).length
        } )
-
     }
 
     const handlerAddButton = () => {
+      if (this.campoAgregar.value) {
+        const newTareas = [...tareas]
+        const maxId = newTareas.reduce((a,b) => a.id > b.id ? a.id : b.id, 0) + 1
+        newTareas.push({"id":maxId, "nombre":this.campoAgregar.value, "completa": false })
+        this.campoAgregar.value = null
+        this.setState( { tareas :newTareas, 
+          cantidadTareasCompletas:  newTareas.filter(e=>e.completa).length,
+          cantidadTareasIncompletas: newTareas.filter(e=>!e.completa).length
+        } )
+      }
+    }
+
+    const handlerEliminarButton = (tarea) => {
       const newTareas = [...tareas]
-      const maxId = newTareas.reduce((a,b) => a.id > b.id ? a.id : b.id) + 1
-      newTareas.push({"id":maxId, "nombre":this.campoAgregar.value, "completa": false })
-      this.campoAgregar.value = null
+      const posicion = newTareas.indexOf(tarea)
+      newTareas.splice(posicion, 1)
       this.setState( { tareas :newTareas, 
         cantidadTareasCompletas:  newTareas.filter(e=>e.completa).length,
         cantidadTareasIncompletas: newTareas.filter(e=>!e.completa).length
        } )
     }
-
 
     return (
       <div className="App">
@@ -65,7 +75,7 @@ class App extends Component {
         <Saludo nombre="Gerardo" apellido="Gonzalez" edad ="44 años" />
         {cantidadTareasIncompletas > 0 && <ComboTareas lista={tareas} filtro={false} cantidadTareas= {cantidadTareasIncompletas}/>}
         {cantidadTareasCompletas > 0 && <ComboTareas lista={tareas} filtro={true} cantidadTareas= {cantidadTareasCompletas}/>}
-        <CheckTareas lista={tareas} handlerCheck={handlerCheck} />  
+        <CheckTareas lista={tareas} handlerCheck={handlerCheck}  handlerEliminarButton={handlerEliminarButton} />  
         <br/>
         <label htmlFor="tareatext">Ingrese una tarea: </label>
         <input id="tareatext" type="text" ref={ele => this.campoAgregar = ele}/>
